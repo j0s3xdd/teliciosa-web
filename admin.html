@@ -23,15 +23,16 @@
 
   /* ── TOPBAR ── */
   #app{display:none}
-  .topbar{background:var(--blk);color:var(--wht);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-  .topbar-brand{font-weight:900;font-size:1.1rem;letter-spacing:-.5px}
+  .topbar{background:var(--blk);color:var(--wht);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:12px}
+  .topbar-brand{font-weight:900;font-size:1.1rem;letter-spacing:-.5px;flex-shrink:0}
   .topbar-brand span{color:var(--y)}
-  .topbar-actions{display:flex;gap:10px;align-items:center}
-  .tb-btn{padding:8px 16px;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;border:none;transition:opacity .2s}
+  .topbar-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .tb-btn{padding:8px 14px;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;border:none;transition:opacity .2s;white-space:nowrap}
   .tb-btn:hover{opacity:.8}
   .tb-preview{background:rgba(255,255,255,.12);color:var(--wht);text-decoration:none}
   .tb-logout{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
   .tb-save{background:var(--y);color:var(--blk)}
+  .tb-cats{background:rgba(255,255,255,.15);color:var(--wht)}
 
   /* ── MAIN ── */
   .main{max-width:900px;margin:0 auto;padding:32px 20px}
@@ -40,25 +41,30 @@
 
   /* ── CATEGORY BLOCK ── */
   .cat-block{background:var(--wht);border-radius:16px;overflow:hidden;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-  .cat-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--gry)}
-  .cat-header-left{display:flex;align-items:center;gap:10px}
-  .cat-icon{font-size:1.3rem}
-  .cat-name{font-weight:800;font-size:1rem}
-  .cat-count{font-size:.78rem;color:var(--mut);background:var(--bg);padding:3px 10px;border-radius:100px}
-  .add-btn{padding:7px 16px;background:var(--y);border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+  .cat-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--gry);gap:8px}
+  .cat-header-left{display:flex;align-items:center;gap:10px;min-width:0}
+  .cat-icon{font-size:1.3rem;flex-shrink:0}
+  .cat-name{font-weight:800;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cat-count{font-size:.78rem;color:var(--mut);background:var(--bg);padding:3px 10px;border-radius:100px;flex-shrink:0}
+  .cat-header-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .add-btn{padding:7px 14px;background:var(--y);border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;transition:opacity .2s}
   .add-btn:hover{opacity:.8}
+  .cat-edit-btn{padding:7px 12px;background:var(--bg);border:none;border-radius:8px;font-size:.82rem;cursor:pointer;transition:background .15s}
+  .cat-edit-btn:hover{background:var(--gry)}
 
   /* ── ITEM ROW ── */
   .item-list{padding:0}
-  .item-row{display:flex;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--gry);transition:background .15s}
+  .item-row{display:flex;align-items:center;gap:10px;padding:13px 20px;border-bottom:1px solid var(--gry);transition:background .15s;touch-action:none}
   .item-row:last-child{border-bottom:none}
   .item-row:hover{background:var(--bg)}
-  .item-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--gry)}
-  .item-emoji{font-size:1.4rem;width:32px;text-align:center;flex-shrink:0}
+  .drag-handle{font-size:1rem;color:#ccc;cursor:grab;flex-shrink:0;user-select:none;padding:0 2px;line-height:1}
+  .drag-handle:active{cursor:grabbing}
+  .item-thumb{width:46px;height:46px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--gry)}
+  .item-emoji{font-size:1.3rem;width:28px;text-align:center;flex-shrink:0}
   .item-info{flex:1;min-width:0}
-  .item-name{font-weight:700;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .item-desc{font-size:.76rem;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .item-price{font-weight:800;font-size:.95rem;color:var(--blk);flex-shrink:0;min-width:52px;text-align:right}
+  .item-name{font-weight:700;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .item-desc{font-size:.75rem;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .item-price{font-weight:800;font-size:.92rem;color:var(--blk);flex-shrink:0;min-width:48px;text-align:right}
   .item-badge{font-size:.7rem;padding:2px 8px;border-radius:100px;flex-shrink:0}
   .item-badge.bh{background:#fff0f0;color:var(--red)}
   .item-badge.bn{background:#fffbe6;color:#b45309}
@@ -69,7 +75,13 @@
   .del-btn{background:#fff0f0;color:var(--red)}
   .del-btn:hover{opacity:.7}
 
-  /* ── EDIT MODAL ── */
+  /* ── DRAG & DROP ── */
+  .item-row[draggable]{cursor:default}
+  .item-row.dragging{opacity:.35;outline:2px dashed var(--y);outline-offset:-2px}
+  .item-row.drag-over{border-top:3px solid var(--y)}
+  .item-list.drop-target{background:rgba(255,209,0,.05)}
+
+  /* ── MODALS ── */
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
   .modal-overlay.open{display:flex}
   .modal{background:var(--wht);border-radius:20px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:32px}
@@ -80,10 +92,10 @@
   .form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:var(--y)}
   .form-row textarea{resize:vertical;min-height:70px}
   .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .badge-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-  .badge-opt{display:flex;align-items:center;gap:6px;padding:8px 14px;border:2px solid var(--gry);border-radius:8px;cursor:pointer;font-size:.84rem;transition:border-color .2s}
-  .badge-opt input{width:auto;margin:0;padding:0;border:none;cursor:pointer}
-  .badge-opt:has(input:checked){border-color:var(--y);background:#fffbe6}
+  .badge-opts,.color-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .badge-opt,.color-opt{display:flex;align-items:center;gap:6px;padding:8px 14px;border:2px solid var(--gry);border-radius:8px;cursor:pointer;font-size:.84rem;transition:border-color .2s}
+  .badge-opt input,.color-opt input{width:auto;margin:0;padding:0;border:none;cursor:pointer}
+  .badge-opt:has(input:checked),.color-opt:has(input:checked){border-color:var(--y);background:#fffbe6}
   .upload-area{border:2px dashed var(--gry);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:border-color .2s}
   .upload-area:hover{border-color:var(--y)}
   .upload-area input{display:none}
@@ -95,8 +107,26 @@
   .btn-cancel{background:var(--bg)}
   .btn-ok{background:var(--y)}
 
+  /* ── CAT MANAGER ── */
+  .cat-list-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--gry)}
+  .cat-list-item:last-child{border-bottom:none}
+  .cat-list-icon{font-size:1.4rem;width:36px;text-align:center;flex-shrink:0}
+  .cat-list-info{flex:1;min-width:0}
+  .cat-list-name{font-weight:700;font-size:.92rem}
+  .cat-list-meta{font-size:.76rem;color:var(--mut);margin-top:2px}
+  .cat-new-btn{width:100%;margin-top:16px;padding:12px;background:var(--y);border:none;border-radius:10px;font-size:.92rem;font-weight:800;cursor:pointer;transition:opacity .2s}
+  .cat-new-btn:hover{opacity:.8}
+
+  /* ── COLOR DOTS ── */
+  .color-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .dot-mc-top{background:#FFD100}
+  .dot-mc-fruit{background:#ff6b9d}
+  .dot-mc-bbt{background:#9b59b6}
+  .dot-mc-blue{background:#3498db}
+  .dot-mc-green{background:#27ae60}
+
   /* ── TOAST ── */
-  .toast{position:fixed;bottom:24px;right:24px;background:var(--blk);color:var(--wht);padding:12px 20px;border-radius:10px;font-size:.88rem;font-weight:600;z-index:300;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none}
+  .toast{position:fixed;bottom:24px;right:24px;background:var(--blk);color:var(--wht);padding:12px 20px;border-radius:10px;font-size:.88rem;font-weight:600;z-index:400;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none}
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.ok::before{content:'✓ '}
   .toast.err::before{content:'✗ ';color:#f87171}
@@ -122,18 +152,19 @@
     <div class="topbar-brand">TELI<span>CIOSA</span> · Admin</div>
     <div class="topbar-actions">
       <a href="/" target="_blank" class="tb-btn tb-preview">Ver la web →</a>
-      <button class="tb-btn tb-save" onclick="saveMenu()">💾 Guardar cambios</button>
+      <button class="tb-btn tb-cats" onclick="openCatManager()">⚙️ Categorías</button>
+      <button class="tb-btn tb-save" onclick="saveMenu()">💾 Guardar</button>
       <button class="tb-btn tb-logout" onclick="logout()">Salir</button>
     </div>
   </div>
   <div class="main">
     <div class="page-title">Gestión del menú</div>
-    <div class="page-sub">Edita precios, nombres y descripciones. Pulsa "Guardar cambios" cuando termines.</div>
+    <div class="page-sub">Arrastra el símbolo ⠿ para reordenar. En móvil, mantén pulsado para arrastrar.</div>
     <div id="categories-container"></div>
   </div>
 </div>
 
-<!-- EDIT MODAL -->
+<!-- EDIT MODAL (item) -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-title" id="modal-title">Editar bebida</div>
@@ -185,22 +216,79 @@
   </div>
 </div>
 
+<!-- CAT MANAGER MODAL -->
+<div class="modal-overlay" id="cat-manager">
+  <div class="modal">
+    <div class="modal-title">⚙️ Categorías</div>
+    <div id="cat-list"></div>
+    <button class="cat-new-btn" onclick="openCatEdit(null)">+ Nueva categoría</button>
+    <div class="modal-footer" style="margin-top:16px">
+      <button class="btn-cancel" onclick="closeCatManager()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CAT EDIT MODAL -->
+<div class="modal-overlay" id="cat-edit-modal">
+  <div class="modal">
+    <div class="modal-title" id="cat-edit-title">Nueva categoría</div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label>Icono (emoji)</label>
+        <input type="text" id="cf-icon" maxlength="4" placeholder="🧋">
+      </div>
+      <div class="form-row">
+        <label>Visibles antes de "Ver más"</label>
+        <input type="number" id="cf-visible" min="0" placeholder="0 = todos">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Nombre del grupo</label>
+      <input type="text" id="cf-name" placeholder="Ej: Más Vendidos">
+    </div>
+    <div class="form-row">
+      <label>Color del encabezado</label>
+      <div class="color-opts">
+        <label class="color-opt"><input type="radio" name="cat-color" value="mc-top"> <span class="color-dot dot-mc-top"></span> Amarillo</label>
+        <label class="color-opt"><input type="radio" name="cat-color" value="mc-fruit"> <span class="color-dot dot-mc-fruit"></span> Rosa</label>
+        <label class="color-opt"><input type="radio" name="cat-color" value="mc-bbt"> <span class="color-dot dot-mc-bbt"></span> Morado</label>
+        <label class="color-opt"><input type="radio" name="cat-color" value="mc-blue"> <span class="color-dot dot-mc-blue"></span> Azul</label>
+        <label class="color-opt"><input type="radio" name="cat-color" value="mc-green"> <span class="color-dot dot-mc-green"></span> Verde</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeCatEdit()">Cancelar</button>
+      <button class="btn-ok" onclick="saveCat()">💾 Guardar</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
   const BADGE_MAP = {
-    'none':    { badge: null,         badgeType: null },
-    'top1':    { badge: '🔥 Top 1',   badgeType: 'bh' },
-    'top2':    { badge: '🔥 Top 2',   badgeType: 'bh' },
-    'popular': { badge: '⭐ Popular',  badgeType: 'bn' },
-    'new':     { badge: '✨ Nuevo',    badgeType: 'bn' },
-    'special': { badge: '💎 Especial', badgeType: 'bn' },
+    'none':    { badge: null,          badgeType: null },
+    'top1':    { badge: '🔥 Top 1',    badgeType: 'bh' },
+    'top2':    { badge: '🔥 Top 2',    badgeType: 'bh' },
+    'popular': { badge: '⭐ Popular',   badgeType: 'bn' },
+    'new':     { badge: '✨ Nuevo',     badgeType: 'bn' },
+    'special': { badge: '💎 Especial',  badgeType: 'bn' },
   };
 
   let token = localStorage.getItem('admin-token') || '';
   let menuData = null;
   let editingId = null;
   let editingCat = null;
+  let editingCatId = null;
+
+  // ── Drag state ────────────────────────────────────────────────
+  let dragItemId = null;
+  let touchTimer = null;
+  let touchDragging = false;
+  let touchDragEl = null;
+  let touchGhost = null;
+  let touchTargetId = null;
+  let touchTargetCat = null;
 
   // ── Auth ──────────────────────────────────────────────────────
   async function doLogin() {
@@ -223,7 +311,6 @@
     location.reload();
   }
 
-  // Auto-login if token stored
   (async () => {
     if (!token) return;
     const res = await fetch('/api/menu', { headers: { 'x-admin-token': token } });
@@ -242,6 +329,7 @@
       const items = menuData.items.filter(i => i.category === cat.id);
       const block = document.createElement('div');
       block.className = 'cat-block';
+      block.dataset.catId = cat.id;
       block.innerHTML = `
         <div class="cat-header">
           <div class="cat-header-left">
@@ -249,20 +337,25 @@
             <span class="cat-name">${cat.name}</span>
             <span class="cat-count">${items.length} bebidas</span>
           </div>
-          <button class="add-btn" onclick="openAdd('${cat.id}')">+ Nueva bebida</button>
+          <div class="cat-header-right">
+            <button class="cat-edit-btn" onclick="openCatEdit('${cat.id}')">✏️ Editar</button>
+            <button class="add-btn" onclick="openAdd('${cat.id}')">+ Nueva bebida</button>
+          </div>
         </div>
-        <div class="item-list">
+        <div class="item-list" data-cat="${cat.id}">
           ${items.map(item => renderItemRow(item)).join('')}
         </div>`;
       container.appendChild(block);
     });
+    attachDragEvents();
   }
 
   function renderItemRow(item) {
     const badgeHtml = item.badge
       ? `<span class="item-badge ${item.badgeType}">${item.badge}</span>`
       : '';
-    return `<div class="item-row" data-id="${item.id}">
+    return `<div class="item-row" data-id="${item.id}" draggable="true">
+      <span class="drag-handle" title="Arrastra para reordenar">⠿</span>
       <img class="item-thumb" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">
       <span class="item-emoji">${item.emoji}</span>
       <div class="item-info">
@@ -278,16 +371,169 @@
     </div>`;
   }
 
-  // ── Modal ─────────────────────────────────────────────────────
+  // ── Drag & Drop (Desktop) ─────────────────────────────────────
+  function attachDragEvents() {
+    document.querySelectorAll('.item-row[draggable]').forEach(row => {
+      row.addEventListener('dragstart', onDragStart);
+      row.addEventListener('dragend', onDragEnd);
+      row.addEventListener('dragover', onDragOver);
+      row.addEventListener('dragleave', onDragLeave);
+      row.addEventListener('drop', onDrop);
+      row.addEventListener('touchstart', onTouchStart, { passive: true });
+      row.addEventListener('touchmove', onTouchMove, { passive: false });
+      row.addEventListener('touchend', onTouchEnd);
+      row.addEventListener('touchcancel', onTouchCancel);
+    });
+    document.querySelectorAll('.item-list').forEach(list => {
+      list.addEventListener('dragover', e => {
+        if (!dragItemId) return;
+        e.preventDefault();
+        list.classList.add('drop-target');
+      });
+      list.addEventListener('dragleave', e => {
+        if (!list.contains(e.relatedTarget)) list.classList.remove('drop-target');
+      });
+      list.addEventListener('drop', e => {
+        list.classList.remove('drop-target');
+        if (dragItemId) moveItem(dragItemId, null, list.dataset.cat);
+      });
+    });
+  }
+
+  function onDragStart(e) {
+    dragItemId = this.dataset.id;
+    this.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', dragItemId);
+  }
+
+  function onDragEnd() {
+    dragItemId = null;
+    document.querySelectorAll('.dragging,.drag-over,.drop-target').forEach(el =>
+      el.classList.remove('dragging', 'drag-over', 'drop-target'));
+  }
+
+  function onDragOver(e) {
+    if (!dragItemId || this.dataset.id === dragItemId) return;
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.item-row.drag-over').forEach(el => el.classList.remove('drag-over'));
+    this.classList.add('drag-over');
+  }
+
+  function onDragLeave(e) {
+    if (!this.contains(e.relatedTarget)) this.classList.remove('drag-over');
+  }
+
+  function onDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!dragItemId) return;
+    const targetId = this.dataset.id;
+    if (targetId === dragItemId) return;
+    const newCat = this.closest('.item-list')?.dataset.cat;
+    moveItem(dragItemId, targetId, newCat);
+  }
+
+  // ── Drag & Drop (Touch / long press) ─────────────────────────
+  function onTouchStart(e) {
+    const row = this;
+    touchTimer = setTimeout(() => {
+      touchDragging = true;
+      touchDragEl = row;
+      dragItemId = row.dataset.id;
+      row.classList.add('dragging');
+      if (navigator.vibrate) navigator.vibrate(40);
+      const rect = row.getBoundingClientRect();
+      touchGhost = row.cloneNode(true);
+      touchGhost.style.cssText = [
+        'position:fixed', `width:${rect.width}px`, 'opacity:.85',
+        'pointer-events:none', 'z-index:500', `left:${rect.left}px`,
+        `top:${rect.top}px`, 'background:#fff', 'border-radius:12px',
+        'box-shadow:0 8px 32px rgba(0,0,0,.25)', 'transition:none'
+      ].join(';');
+      document.body.appendChild(touchGhost);
+    }, 500);
+  }
+
+  function onTouchMove(e) {
+    if (!touchDragging) {
+      clearTimeout(touchTimer);
+      return;
+    }
+    e.preventDefault();
+    const touch = e.touches[0];
+    if (touchGhost) {
+      touchGhost.style.left = (touch.clientX - touchGhost.offsetWidth / 2) + 'px';
+      touchGhost.style.top  = (touch.clientY - 32) + 'px';
+      touchGhost.style.display = 'none';
+    }
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (touchGhost) touchGhost.style.display = '';
+
+    const targetRow  = el?.closest('.item-row[data-id]');
+    const targetList = el?.closest('.item-list');
+    document.querySelectorAll('.item-row.drag-over,.item-list.drop-target').forEach(x =>
+      x.classList.remove('drag-over', 'drop-target'));
+
+    if (targetRow && targetRow !== touchDragEl) {
+      touchTargetId  = targetRow.dataset.id;
+      touchTargetCat = targetRow.closest('.item-list')?.dataset.cat;
+      targetRow.classList.add('drag-over');
+    } else if (targetList) {
+      touchTargetId  = null;
+      touchTargetCat = targetList.dataset.cat;
+      targetList.classList.add('drop-target');
+    } else {
+      touchTargetId  = null;
+      touchTargetCat = null;
+    }
+  }
+
+  function onTouchEnd() {
+    clearTimeout(touchTimer);
+    if (touchGhost) { touchGhost.remove(); touchGhost = null; }
+    document.querySelectorAll('.dragging,.drag-over,.drop-target').forEach(el =>
+      el.classList.remove('dragging', 'drag-over', 'drop-target'));
+    if (touchDragging && dragItemId && (touchTargetId || touchTargetCat)) {
+      moveItem(dragItemId, touchTargetId, touchTargetCat);
+    }
+    touchDragging = false; touchDragEl = null;
+    touchTargetId = null;  touchTargetCat = null;
+    dragItemId = null;
+  }
+
+  function onTouchCancel() {
+    clearTimeout(touchTimer);
+    if (touchGhost) { touchGhost.remove(); touchGhost = null; }
+    document.querySelectorAll('.dragging,.drag-over,.drop-target').forEach(el =>
+      el.classList.remove('dragging', 'drag-over', 'drop-target'));
+    touchDragging = false; touchDragEl = null; dragItemId = null;
+  }
+
+  // ── Move item (reorder / change category) ────────────────────
+  function moveItem(itemId, targetId, newCategory) {
+    const items = menuData.items;
+    const fromIdx = items.findIndex(i => i.id === itemId);
+    if (fromIdx === -1) return;
+    const [item] = items.splice(fromIdx, 1);
+    if (newCategory) item.category = newCategory;
+    const toIdx = targetId ? items.findIndex(i => i.id === targetId) : -1;
+    items.splice(toIdx >= 0 ? toIdx : items.length, 0, item);
+    renderApp();
+    saveMenu(true);
+  }
+
+  // ── Item modal ────────────────────────────────────────────────
   async function openEdit(id) {
     const item = menuData.items.find(i => i.id === id);
     if (!item) return;
-    editingId = id;
-    editingCat = item.category;
+    editingId = id; editingCat = item.category;
     document.getElementById('modal-title').textContent = 'Editar: ' + item.name;
     document.getElementById('f-emoji').value = item.emoji;
-    document.getElementById('f-name').value = item.name;
-    document.getElementById('f-desc').value = item.description;
+    document.getElementById('f-name').value  = item.name;
+    document.getElementById('f-desc').value  = item.description;
     document.getElementById('f-price').value = item.price;
     await loadImageOptions(item.image);
     setBadgeRadio(item.badge, item.badgeType);
@@ -296,12 +542,11 @@
   }
 
   async function openAdd(catId) {
-    editingId = null;
-    editingCat = catId;
+    editingId = null; editingCat = catId;
     document.getElementById('modal-title').textContent = 'Nueva bebida';
     document.getElementById('f-emoji').value = '🧋';
-    document.getElementById('f-name').value = '';
-    document.getElementById('f-desc').value = '';
+    document.getElementById('f-name').value  = '';
+    document.getElementById('f-desc').value  = '';
     document.getElementById('f-price').value = '6,50';
     await loadImageOptions('');
     document.querySelector('input[name="badge"][value="none"]').checked = true;
@@ -327,10 +572,10 @@
     }
   }
 
-  function setBadgeRadio(badge, badgeType) {
+  function setBadgeRadio(badge) {
     let val = 'none';
     if (badge) {
-      const entry = Object.entries(BADGE_MAP).find(([,v]) => v.badge === badge);
+      const entry = Object.entries(BADGE_MAP).find(([, v]) => v.badge === badge);
       if (entry) val = entry[0];
     }
     const radio = document.querySelector(`input[name="badge"][value="${val}"]`);
@@ -349,9 +594,7 @@
     form.append('photo', file);
     try {
       const res = await fetch('/admin/upload', {
-        method: 'POST',
-        headers: { 'x-admin-token': token },
-        body: form
+        method: 'POST', headers: { 'x-admin-token': token }, body: form
       });
       const data = await res.json();
       if (data.path) {
@@ -361,9 +604,7 @@
         await loadImageOptions(data.path);
         showToast('Foto subida', 'ok');
       }
-    } catch(e) {
-      showToast('Error al subir la foto', 'err');
-    }
+    } catch(e) { showToast('Error al subir la foto', 'err'); }
   }
 
   async function saveItem() {
@@ -372,15 +613,14 @@
     const badgeKey = document.querySelector('input[name="badge"]:checked')?.value || 'none';
     const { badge, badgeType } = BADGE_MAP[badgeKey];
     const item = {
-      id: editingId || name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g,'-'),
+      id: editingId || name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-'),
       category: editingCat,
       emoji: document.getElementById('f-emoji').value.trim() || '🧋',
       name,
       description: document.getElementById('f-desc').value.trim(),
       price: document.getElementById('f-price').value.trim(),
       image: document.getElementById('f-image').value,
-      badge,
-      badgeType
+      badge, badgeType
     };
     if (editingId) {
       const idx = menuData.items.findIndex(i => i.id === editingId);
@@ -402,18 +642,99 @@
     await saveMenu(true);
   }
 
+  // ── Category manager ──────────────────────────────────────────
+  function openCatManager() {
+    renderCatList();
+    document.getElementById('cat-manager').classList.add('open');
+  }
+
+  function closeCatManager() {
+    document.getElementById('cat-manager').classList.remove('open');
+  }
+
+  function renderCatList() {
+    const list = document.getElementById('cat-list');
+    const COLOR_NAMES = { 'mc-top': 'Amarillo', 'mc-fruit': 'Rosa', 'mc-bbt': 'Morado', 'mc-blue': 'Azul', 'mc-green': 'Verde' };
+    list.innerHTML = menuData.categories.map(cat => {
+      const count = menuData.items.filter(i => i.category === cat.id).length;
+      const colorName = COLOR_NAMES[cat.theme] || cat.theme || '—';
+      return `<div class="cat-list-item">
+        <span class="cat-list-icon">${cat.icon}</span>
+        <div class="cat-list-info">
+          <div class="cat-list-name">${cat.name}</div>
+          <div class="cat-list-meta">${count} bebidas · ${colorName}</div>
+        </div>
+        <div class="cat-list-actions">
+          <button class="edit-btn" onclick="openCatEdit('${cat.id}')" title="Editar">✏️</button>
+          <button class="del-btn" onclick="deleteCat('${cat.id}')" title="Eliminar">🗑️</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCatEdit(catId) {
+    editingCatId = catId;
+    const cat = catId ? menuData.categories.find(c => c.id === catId) : null;
+    document.getElementById('cat-edit-title').textContent = cat ? 'Editar: ' + cat.name : 'Nueva categoría';
+    document.getElementById('cf-icon').value    = cat?.icon || '🧋';
+    document.getElementById('cf-name').value    = cat?.name || '';
+    document.getElementById('cf-visible').value = cat?.visibleCount ?? 0;
+    const colorVal = cat?.theme || 'mc-top';
+    const radio = document.querySelector(`input[name="cat-color"][value="${colorVal}"]`);
+    if (radio) radio.checked = true;
+    document.getElementById('cat-edit-modal').classList.add('open');
+  }
+
+  function closeCatEdit() {
+    document.getElementById('cat-edit-modal').classList.remove('open');
+    editingCatId = null;
+  }
+
+  async function saveCat() {
+    const name = document.getElementById('cf-name').value.trim();
+    if (!name) { showToast('El nombre es obligatorio', 'err'); return; }
+    const icon  = document.getElementById('cf-icon').value.trim() || '🧋';
+    const theme = document.querySelector('input[name="cat-color"]:checked')?.value || 'mc-top';
+    const visibleCount = parseInt(document.getElementById('cf-visible').value) || 0;
+    if (editingCatId) {
+      const cat = menuData.categories.find(c => c.id === editingCatId);
+      if (cat) Object.assign(cat, { name, icon, theme, visibleCount });
+    } else {
+      const id = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
+      menuData.categories.push({ id, name, icon, theme, visibleCount });
+    }
+    closeCatEdit();
+    renderCatList();
+    renderApp();
+    await saveMenu(true);
+  }
+
+  async function deleteCat(catId) {
+    const count = menuData.items.filter(i => i.category === catId).length;
+    if (count > 0) {
+      showToast(`No se puede borrar — tiene ${count} bebidas`, 'err');
+      return;
+    }
+    const cat = menuData.categories.find(c => c.id === catId);
+    if (!confirm(`¿Eliminar la categoría "${cat?.name}"?`)) return;
+    menuData.categories = menuData.categories.filter(c => c.id !== catId);
+    renderCatList();
+    renderApp();
+    await saveMenu(true);
+  }
+
   // ── Save to server ────────────────────────────────────────────
-  async function saveMenu(silent = false) {
+  async function saveMenu(auto = false) {
     try {
       const res = await fetch('/api/menu', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-token': token },
         body: JSON.stringify(menuData, null, 2)
       });
-      if (res.ok) showToast('✅ Guardado — ya se ve en la web', 'ok');
+      if (res.ok) showToast(auto ? '✅ Guardado' : '✅ Guardado — ya se ve en la web', 'ok');
       else showToast('Error al guardar', 'err');
     } catch(e) {
-      if (!silent) showToast('Error de conexión', 'err');
+      showToast('Error de conexión', 'err');
     }
   }
 
@@ -422,12 +743,18 @@
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.className = `toast show ${type}`;
-    setTimeout(() => t.classList.remove('show'), 3000);
+    setTimeout(() => t.classList.remove('show'), 2800);
   }
 
-  // ── Close modal on overlay click ──────────────────────────────
+  // ── Close modals on overlay click ─────────────────────────────
   document.getElementById('modal').addEventListener('click', e => {
-    if (e.target === document.getElementById('modal')) closeModal();
+    if (e.target.id === 'modal') closeModal();
+  });
+  document.getElementById('cat-manager').addEventListener('click', e => {
+    if (e.target.id === 'cat-manager') closeCatManager();
+  });
+  document.getElementById('cat-edit-modal').addEventListener('click', e => {
+    if (e.target.id === 'cat-edit-modal') closeCatEdit();
   });
 </script>
 </body>
