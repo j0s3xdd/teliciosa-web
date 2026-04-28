@@ -30,7 +30,7 @@
       "name": "Mango con Queso",
       "description": "Té de mango con queso y bolitas de frutas. El favorito absoluto.",
       "price": "7,00",
-      "image": "assets/drink_mango.jpg",
+      "image": "assets/drink_mango.webp",
       "badge": "🔥 Top 1",
       "badgeType": "bh"
     },
@@ -52,7 +52,7 @@
       "name": "Té de Mango",
       "description": "Té de mango con bolitas de frutas.",
       "price": "7,00",
-      "image": "assets/drink_mango.jpg",
+      "image": "assets/drink_mango.webp",
       "badge": null,
       "badgeType": null
     },
@@ -63,7 +63,7 @@
       "name": "Té de Fresa con Queso",
       "description": "Té de fresa con queso y bolitas de frutas.",
       "price": "7,00",
-      "image": "assets/drink_strawberry.jpg",
+      "image": "assets/drink_strawberry.webp",
       "badge": null,
       "badgeType": null
     },
@@ -74,7 +74,7 @@
       "name": "Té de Piña con Queso",
       "description": "Té de piña con queso y bolitas de frutas.",
       "price": "7,00",
-      "image": "assets/drink_passion.jpg",
+      "image": "assets/drink_passion.webp",
       "badge": null,
       "badgeType": null
     },
@@ -85,7 +85,7 @@
       "name": "Té de Limón Fresco",
       "description": "Té de limón con bolitas de frutas. Fresco y natural.",
       "price": "6,50",
-      "image": "assets/drink_lemon.jpg",
+      "image": "assets/drink_lemon.webp",
       "badge": null,
       "badgeType": null
     },
@@ -107,7 +107,7 @@
       "name": "Té de Arándanos",
       "description": "Té de arándanos con bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_blueberry.jpg",
+      "image": "assets/drink_blueberry.webp",
       "badge": null,
       "badgeType": null
     },
@@ -118,7 +118,7 @@
       "name": "Té de Uva Roja",
       "description": "Té de uva roja con bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_blueberry.jpg",
+      "image": "assets/drink_blueberry.webp",
       "badge": null,
       "badgeType": null
     },
@@ -129,7 +129,7 @@
       "name": "Té de Fresa",
       "description": "Té de fresa con bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_strawberry.jpg",
+      "image": "assets/drink_strawberry.webp",
       "badge": null,
       "badgeType": null
     },
@@ -140,7 +140,7 @@
       "name": "Mango con Miel",
       "description": "Mango con miel y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_mango.jpg",
+      "image": "assets/drink_mango.webp",
       "badge": null,
       "badgeType": null
     },
@@ -151,7 +151,7 @@
       "name": "Té de Melocotón",
       "description": "Té de melocotón con bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_thai.jpg",
+      "image": "assets/drink_thai.webp",
       "badge": null,
       "badgeType": null
     },
@@ -162,7 +162,7 @@
       "name": "Té de Piña",
       "description": "Té de piña con bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_passion.jpg",
+      "image": "assets/drink_passion.webp",
       "badge": null,
       "badgeType": null
     },
@@ -173,7 +173,7 @@
       "name": "Maracuyá con Piña",
       "description": "Té de maracuyá con piña y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_passion.jpg",
+      "image": "assets/drink_passion.webp",
       "badge": null,
       "badgeType": null
     },
@@ -184,7 +184,7 @@
       "name": "Maracuyá con Limón",
       "description": "Té de maracuyá con limón y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_lemon.jpg",
+      "image": "assets/drink_lemon.webp",
       "badge": null,
       "badgeType": null
     },
@@ -195,7 +195,7 @@
       "name": "Maracuyá con Lichi",
       "description": "Té de maracuyá con lichi y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_passion.jpg",
+      "image": "assets/drink_passion.webp",
       "badge": null,
       "badgeType": null
     },
@@ -206,7 +206,7 @@
       "name": "Maracuyá con Mango",
       "description": "Té de maracuyá con mango y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_mango.jpg",
+      "image": "assets/drink_mango.webp",
       "badge": null,
       "badgeType": null
     },
@@ -217,7 +217,7 @@
       "name": "Té de Fresa con Leche",
       "description": "Refresco de fresa con leche y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_strawberry.jpg",
+      "image": "assets/drink_strawberry.webp",
       "badge": null,
       "badgeType": null
     },
@@ -228,7 +228,7 @@
       "name": "Té de Melón",
       "description": "Té de melón con bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_melon.jpg",
+      "image": "assets/drink_melon.webp",
       "badge": null,
       "badgeType": null
     },
@@ -239,7 +239,7 @@
       "name": "Té de Limón con Yogur",
       "description": "Té de limón con yogur y bolitas de frutas.",
       "price": "6,50",
-      "image": "assets/drink_lemon.jpg",
+      "image": "assets/drink_lemon.webp",
       "badge": null,
       "badgeType": null
     },
@@ -338,7 +338,7 @@
       "name": "Té Tailandés",
       "description": "Té tailandés con tapioca. Auténtico sabor asiático.",
       "price": "6,50",
-      "image": "assets/drink_thai.jpg",
+      "image": "assets/drink_thai.webp",
       "badge": null,
       "badgeType": null
     },
