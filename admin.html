@@ -12,7 +12,7 @@
   /* ── LOGIN ── */
   #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
   .login-box{background:var(--wht);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,.1);text-align:center}
-  .login-logo{font-size:2.5rem;margin-bottom:8px}
+  .login-logo{width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center 18%;margin-bottom:16px;border:3px solid var(--y)}
   .login-title{font-size:1.4rem;font-weight:800;margin-bottom:4px}
   .login-sub{font-size:.85rem;color:var(--mut);margin-bottom:32px}
   .login-box input{width:100%;padding:14px 18px;border:2px solid var(--gry);border-radius:12px;font-size:1rem;outline:none;transition:border-color .2s;margin-bottom:12px}
@@ -107,7 +107,7 @@
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
-    <div class="login-logo">🧋</div>
+    <img class="login-logo" src="assets/avatar.jpg" alt="Teliciosa">
     <div class="login-title">Panel de administración</div>
     <div class="login-sub">Introduce la contraseña para acceder</div>
     <input type="password" id="pwd-input" placeholder="Contraseña" onkeydown="if(event.key==='Enter')doLogin()">
