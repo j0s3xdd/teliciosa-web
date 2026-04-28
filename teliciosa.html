@@ -267,10 +267,7 @@
       nav{padding:0 20px}
       .nav-links,.nav-cta{display:none}
       .ham{display:flex}
-      .delivery{gap:36px;padding:56px 32px;justify-content:center;text-align:center}
-      .delivery-content{text-align:center}
-      .d-btns{justify-content:center}
-      .mascot-circle{width:150px;height:150px}
+      .scroll-hint{display:none}
       .hero{grid-template-columns:1fr;padding-top:72px}
       .hero-text{padding:88px 24px 56px;border-right:none;border-bottom:1px solid var(--gry);text-align:center}
       .hero-eyebrow{justify-content:center}
@@ -280,10 +277,13 @@
       .btn-y,.btn-dark{width:100%;max-width:280px;justify-content:center;padding:15px 24px}
       .hero-wall{padding-top:0;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;height:400px}
       .hw:first-child{grid-row:span 2}
-      .what{padding:80px 24px}
+      .stats{display:grid;grid-template-columns:repeat(3,1fr)}
+      .stat{padding:20px 10px;min-width:0;border-right:1px solid rgba(0,0,0,.12)}
+      .stat:last-child{border-right:none}
+      .stat-n{font-size:1.55rem}
+      .what{padding:72px 20px}
       .what-inner{grid-template-columns:1fr;gap:40px}
       .what-left-sticky{position:static}
-      .what{padding:72px 20px}
       .what-grid{grid-template-columns:1fr}
       .about-wrap{grid-template-columns:1fr;gap:44px;padding:72px 24px}
       .about-visual{min-height:300px;grid-template-rows:160px 160px}
@@ -292,20 +292,41 @@
       .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
       .drink-card:first-child{grid-column:span 2}
       .menu-section{padding:72px 20px}
+      .mc-head{padding:14px 18px}
+      .mc-title{font-size:1.2rem}
+      .mc-icon{font-size:1.6rem}
+      .cards{grid-template-columns:repeat(auto-fill,minmax(min(260px,42vw),1fr))}
       .reviews{padding:72px 20px}
       .reviews-head{grid-template-columns:1fr}
       .review-grid{grid-template-columns:1fr}
       .loc-wrap{grid-template-columns:1fr;gap:44px;padding:72px 24px}
       .map-box{height:300px}
-      .delivery{padding:64px 24px}
+      .delivery{gap:36px;padding:56px 24px;justify-content:center;text-align:center}
+      .delivery-content{text-align:center}
+      .d-btns{justify-content:center}
+      .mascot-circle{width:140px;height:140px}
       .ft-grid{grid-template-columns:1fr;gap:36px;padding:0 0 48px}
-      footer{padding:56px 24px 28px}
-      .stat{padding:22px 16px;min-width:140px}
+      footer{padding:56px 24px 96px}
     }
     @media(max-width:480px){
       .gallery-grid{grid-template-columns:1fr;grid-template-rows:unset}
       .drink-card{height:200px}
       .drink-card:first-child{grid-column:span 1}
+      .stats{grid-template-columns:1fr}
+      .stat{border-right:none;border-bottom:1px solid rgba(0,0,0,.08);padding:16px}
+      .stat:last-child{border-bottom:none}
+      .stat-n{font-size:2rem}
+      .about-visual{grid-template-columns:1fr;min-height:unset;grid-template-rows:unset}
+      .about-photo{height:180px}
+      .about-photo:first-child{grid-row:span 1}
+      .cards{grid-template-columns:1fr 1fr;gap:10px}
+      .card-img{height:130px}
+      .card-body{padding:14px 16px}
+      .mc-head{padding:12px 14px}
+      .mc-title{font-size:1rem}
+      .mc-icon{font-size:1.3rem}
+      .review-grid{grid-template-columns:1fr}
+      .float-order{bottom:16px;right:16px;padding:11px 20px;font-size:.82rem}
     }
   </style>
 </head>

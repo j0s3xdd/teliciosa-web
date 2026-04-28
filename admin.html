@@ -130,6 +130,33 @@
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.ok::before{content:'✓ '}
   .toast.err::before{content:'✗ ';color:#f87171}
+
+  /* ── MOBILE ── */
+  @media(max-width:600px){
+    .login-box{padding:40px 22px}
+    .topbar{height:auto;padding:10px 14px;flex-wrap:wrap;gap:6px}
+    .topbar-actions{width:100%;justify-content:flex-end;flex-wrap:nowrap}
+    .tb-preview{display:none}
+    .tb-btn{padding:7px 10px;font-size:.78rem}
+    .main{padding:16px 12px}
+    .page-title{font-size:1.3rem}
+    .page-sub{font-size:.82rem;margin-bottom:18px;display:none}
+    .cat-header{flex-wrap:wrap;padding:12px 14px;gap:6px}
+    .cat-header-right{width:100%;justify-content:flex-end}
+    .cat-edit-btn{font-size:.75rem;padding:5px 10px}
+    .add-btn{font-size:.75rem;padding:5px 11px}
+    .item-row{padding:10px 12px;gap:8px}
+    .drag-handle{display:none}
+    .item-emoji{display:none}
+    .item-thumb{width:40px;height:40px;border-radius:6px}
+    .item-badge{display:none}
+    .item-price{min-width:36px;font-size:.85rem}
+    .edit-btn,.del-btn{width:30px;height:30px;font-size:.82rem}
+    .modal-overlay{padding:0;align-items:flex-end}
+    .modal{border-radius:20px 20px 0 0;max-height:93vh;max-width:100%;padding:24px 16px 32px;width:100%}
+    .form-row-2{grid-template-columns:1fr}
+    .toast{bottom:16px;right:10px;left:10px;text-align:center}
+  }
 </style>
 </head>
 <body>
