@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="96" fill="#000" stroke="#fff" stroke-width="3"/>
+  <!-- URBAN HAIR text -->
+  <text x="100" y="96" font-family="'Arial', sans-serif" font-size="22" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="3">URBAN HAIR</text>
+  <!-- Separator line -->
+  <line x1="52" y1="107" x2="148" y2="107" stroke="#fff" stroke-width="1.2"/>
+  <!-- FHM text -->
+  <text x="100" y="126" font-family="'Arial', sans-serif" font-size="13" font-weight="300" fill="#fff" text-anchor="middle" letter-spacing="4">FHM</text>
+</svg>

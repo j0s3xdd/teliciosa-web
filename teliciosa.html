@@ -1,0 +1,701 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teliciosa — Bubble Tea & Tés Afrutados · Córdoba</title>
+  <meta name="description" content="El primer Bubble Tea de Córdoba. Tés afrutados, Bubble Tea, helados artesanos y café. Centro Comercial El Arcángel, Planta 1.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --y: #FFD100;
+      --yd: rgba(255,209,0,0.13);
+      --blk: #0A0A0A;
+      --wht: #FFFFFF;
+      --off: #F7F7F7;
+      --gry: #E5E5E5;
+      --txt: #1A1A1A;
+      --mut: #777;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;background:var(--wht);color:var(--txt);overflow-x:hidden}
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fu{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+    .fu.vis{opacity:1;transform:translateY(0)}
+    .fu-d1{transition-delay:.1s} .fu-d2{transition-delay:.2s} .fu-d3{transition-delay:.3s}
+
+    /* ── NAV ── */
+    nav{position:fixed;inset:0 0 auto 0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,209,0,.25)}
+    .nav-logo{font-size:1.55rem;font-weight:900;letter-spacing:-1.5px;color:var(--blk);text-decoration:none}
+    .nav-logo span{color:var(--y);-webkit-text-stroke:1px var(--blk)}
+    .nav-links{display:flex;gap:36px;list-style:none}
+    .nav-links a{text-decoration:none;font-size:.78rem;font-weight:700;color:var(--txt);text-transform:uppercase;letter-spacing:.07em;transition:opacity .2s}
+    .nav-links a:hover{opacity:.45}
+    .nav-cta{background:var(--y);color:var(--blk);padding:10px 26px;border-radius:100px;font-weight:800;font-size:.82rem;text-decoration:none;letter-spacing:.03em;transition:transform .2s,box-shadow .2s}
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,209,0,.55)}
+
+    /* hamburger */
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:300;border:none;background:none;padding:4px}
+    .ham span{display:block;width:24px;height:2px;background:var(--blk);transition:all .3s;border-radius:2px}
+    .ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* mobile menu overlay */
+    .mob-nav{position:fixed;inset:0;background:var(--blk);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:translateX(100%);transition:transform .38s cubic-bezier(.77,0,.18,1)}
+    .mob-nav.open{transform:translateX(0)}
+    .mob-nav ul{list-style:none;text-align:center;margin-bottom:40px}
+    .mob-nav ul li{margin-bottom:8px}
+    .mob-nav ul a{font-size:2.2rem;font-weight:900;color:var(--wht);text-decoration:none;letter-spacing:-1.5px;line-height:1.2;display:block;padding:8px 0;transition:color .2s}
+    .mob-nav ul a:hover{color:var(--y)}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;background:#fff;display:grid;grid-template-columns:1fr 1.25fr;overflow:hidden;position:relative}
+    .hero-text{padding:132px 56px 80px 72px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--gry);position:relative;z-index:2}
+    .hero-eyebrow{font-size:.62rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.3em;margin-bottom:24px;display:flex;align-items:center;gap:14px}
+    .hero-eyebrow::before{content:'';display:block;width:36px;height:1.5px;background:var(--y);flex-shrink:0}
+    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,9vw,9rem);font-weight:900;color:var(--blk);line-height:.88;letter-spacing:-4px}
+    .hero-title .neon{color:var(--y);font-style:italic}
+    .hero-divider{width:52px;height:3px;background:var(--y);margin:28px 0;border-radius:2px}
+    .hero-sub{font-size:.9rem;color:var(--mut);line-height:1.9;max-width:380px;font-weight:400}
+    .hero-btns{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn-y{background:var(--y);color:var(--blk);padding:16px 44px;border-radius:100px;font-weight:800;font-size:.95rem;text-decoration:none;transition:transform .25s,box-shadow .25s;display:inline-flex;align-items:center;gap:8px}
+    .btn-y:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(255,209,0,.5)}
+    .btn-dark{background:var(--blk);color:#fff;padding:16px 44px;border-radius:100px;font-weight:700;font-size:.95rem;text-decoration:none;transition:transform .25s,opacity .25s;display:inline-flex;align-items:center;gap:8px}
+    .btn-dark:hover{transform:translateY(-3px);opacity:.8}
+    .btn-ghost{background:transparent;color:var(--wht);padding:16px 44px;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid rgba(255,255,255,.22);transition:all .25s}
+    .btn-ghost:hover{border-color:var(--y);color:var(--y)}
+    /* photo mosaic wall */
+    .hero-wall{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:4px;align-self:stretch;padding-top:72px}
+    .hw{overflow:hidden;position:relative;cursor:pointer;background:var(--gry)}
+    .hw img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease,filter .3s;filter:saturate(1.05)}
+    .hw:hover img{transform:scale(1.07);filter:saturate(1.35) brightness(1.05)}
+    .hw:first-child{grid-row:span 2}
+    .hw-lbl{position:absolute;bottom:12px;left:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--blk);font-size:.58rem;font-weight:800;padding:5px 12px;border-radius:100px;letter-spacing:.08em}
+    .scroll-hint{position:absolute;bottom:28px;left:72px;display:flex;align-items:center;gap:12px;color:var(--mut);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;z-index:3}
+    .scroll-line{width:36px;height:1px;background:var(--mut);flex-shrink:0}
+    @keyframes pline{0%,100%{opacity:.3}50%{opacity:1}}
+
+    /* ── HERO LOGO STAMP ── */
+    .hero-logo{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center 18%;border:3px solid var(--y);box-shadow:0 0 0 8px rgba(255,209,0,.13),0 6px 28px rgba(0,0,0,.2);display:block;margin-bottom:28px}
+    .hero-price{display:inline-block;background:var(--y);color:var(--blk);font-size:.72rem;font-weight:800;padding:6px 18px;border-radius:100px;margin-top:16px;letter-spacing:.04em}
+
+    /* ── MARQUEE ── */
+    .marquee-wrap{background:var(--y);overflow:hidden;padding:13px 0;position:relative}
+    .marquee-track{display:flex;gap:0;animation:marquee 28s linear infinite;width:max-content}
+    .mi{font-size:.7rem;font-weight:800;color:var(--blk);text-transform:uppercase;letter-spacing:.22em;padding:0 32px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+    .mi::after{content:'◆';font-size:.45rem;opacity:.5}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── STATS ── */
+    .stats{background:var(--y);display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+    .stat{flex:1;min-width:150px;text-align:center;padding:28px 20px;border-right:1px solid rgba(0,0,0,.12)}
+    .stat:last-child{border-right:none}
+    .stat-n{font-size:2rem;font-weight:900;color:var(--blk);line-height:1;letter-spacing:-1px}
+    .stat-l{font-size:.68rem;font-weight:700;color:rgba(0,0,0,.55);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+
+    /* ── SHARED SECTION TAG ── */
+    .stag{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .stag::before{content:'';display:block;width:28px;height:2px}
+    .stag.dk{color:var(--blk)}.stag.dk::before{background:var(--blk)}
+    .stag.lt{color:var(--y)}.stag.lt::before{background:var(--y)}
+    .stag.ct{justify-content:center}
+
+    /* ── QUÉ ES EL BUBBLE TEA ── */
+    .what{background:#0a0a0a;padding:130px 72px}
+    .what-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:96px;align-items:start}
+    .what-left-sticky{position:sticky;top:120px}
+    .what-left-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5vw,4.8rem);font-weight:700;color:var(--wht);line-height:.95;letter-spacing:-2px;margin-top:16px}
+    .what-left-title em{color:var(--y);font-style:italic}
+    .what-left-sub{color:rgba(255,255,255,.28);font-size:.85rem;margin-top:18px;line-height:1.85;font-weight:300}
+    .what-steps{display:flex;flex-direction:column}
+    .what-step{display:grid;grid-template-columns:72px 1fr;gap:20px;padding:40px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .what-step:first-child{border-top:1px solid rgba(255,255,255,.06)}
+    .what-step-n{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--y);opacity:.28;line-height:1.1;padding-top:4px}
+    .what-step h3{font-size:1rem;font-weight:700;color:var(--wht);margin-bottom:10px;letter-spacing:-.3px}
+    .what-step p{font-size:.84rem;color:rgba(255,255,255,.35);line-height:1.8}
+
+    /* ── ABOUT ── */
+    .about-wrap{padding:100px 48px;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
+    .about-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:700;line-height:.98;letter-spacing:-2px;margin-bottom:24px}
+    .about-title em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--blk)}
+    .about-body{font-size:.97rem;line-height:1.82;color:var(--mut);margin-bottom:16px}
+    .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .tag{background:var(--off);border:1px solid var(--gry);padding:8px 18px;border-radius:100px;font-size:.78rem;font-weight:600}
+    .about-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 240px;gap:8px;border-radius:28px;overflow:hidden;min-height:480px}
+    .about-photo{overflow:hidden;position:relative}
+    .about-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease,filter .3s;filter:saturate(1.1)}
+    .about-photo:hover img{transform:scale(1.06);filter:saturate(1.4)}
+    .about-photo:first-child{grid-row:span 2}
+    .about-handle-badge{position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--blk);font-size:.6rem;font-weight:800;padding:6px 14px;border-radius:100px;letter-spacing:.06em}
+    .about-handle{color:rgba(255,255,255,.6);font-size:.88rem;font-weight:600;letter-spacing:.05em}
+
+    /* ── GALLERY ── */
+    .gallery{background:var(--off);padding:100px 48px}
+    .gallery-head{text-align:center;margin-bottom:52px}
+    .gallery-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5vw,4.5rem);font-weight:700;letter-spacing:-2px;line-height:.95;margin-bottom:12px}
+    .gallery-sub{font-size:.9rem;color:var(--mut);margin-top:12px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:280px 280px;gap:14px;max-width:1140px;margin:0 auto}
+    .drink-card{border-radius:18px;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;background:var(--gry)}
+    .drink-card:hover{transform:scale(1.025);box-shadow:0 20px 56px rgba(0,0,0,.22)}
+    .drink-card:first-child{grid-column:span 2}
+    .drink-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+    .drink-card:hover img{transform:scale(1.06)}
+    .drink-card .dc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 55%)}
+    .drink-card .dc-label{position:absolute;bottom:16px;left:16px;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.03em;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+    .gallery-cta{text-align:center;margin-top:44px}
+    .gallery-cta p{font-size:.85rem;color:var(--mut);margin-bottom:16px}
+
+    /* ── MENU ── */
+    .menu-section{background:var(--blk);padding:100px 48px}
+    .menu-head{text-align:center;margin-bottom:52px}
+    .menu-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;color:var(--wht);letter-spacing:-2px;line-height:.92;margin-bottom:10px}
+    .menu-sub{color:rgba(255,255,255,.35);font-size:.88rem;margin-top:12px}
+    .tabs{display:flex;justify-content:center;gap:10px;margin-bottom:50px;flex-wrap:wrap}
+    .tab{background:transparent;border:2px solid rgba(255,255,255,.14);color:rgba(255,255,255,.5);padding:10px 30px;border-radius:100px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .22s;letter-spacing:.02em}
+    .tab:hover{border-color:rgba(255,209,0,.4);color:var(--y)}
+    .tab.on{background:var(--y);border-color:var(--y);color:var(--blk)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;max-width:1140px;margin:0 auto}
+    .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:0;overflow:hidden;transition:background .28s,border-color .28s,transform .28s;display:flex;flex-direction:column}
+    .card.extra{display:none}
+    .mc-body.expanded .card.extra{display:flex}
+    .card:hover{background:var(--yd);border-color:rgba(255,209,0,.35);transform:translateY(-5px)}
+    .card-img{width:100%;height:170px;object-fit:cover;display:block;flex-shrink:0;transition:transform .4s}
+    .card:hover .card-img{transform:scale(1.05)}
+    .card-body{padding:20px 22px;display:flex;flex-direction:column;flex:1}
+    .ci{font-size:1.6rem;margin-bottom:8px;display:block;line-height:1}
+    .cn{font-size:.98rem;font-weight:700;color:var(--wht);margin-bottom:6px;line-height:1.3}
+    .cd{font-size:.78rem;color:rgba(255,255,255,.38);line-height:1.55;flex:1;margin-bottom:18px}
+    .cf{display:flex;align-items:center;justify-content:space-between}
+    .cp{font-size:1.28rem;font-weight:900;color:var(--y)}
+    .badge{font-size:.62rem;font-weight:800;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em}
+    .bh{background:rgba(255,88,88,.18);color:#FF9090}
+    .bn{background:rgba(255,209,0,.14);color:var(--y)}
+    .menu-cta{text-align:center;margin-top:64px}
+    .menu-cta p{color:rgba(255,255,255,.3);font-size:.82rem;margin-bottom:18px}
+
+    /* ── MENU CATEGORIES ── */
+    .menu-cat{max-width:1140px;margin:0 auto 52px}
+    .mc-head{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-radius:18px;cursor:pointer;margin-bottom:20px;user-select:none;transition:opacity .2s}
+    .mc-head:hover{opacity:.85}
+    .mc-info{display:flex;align-items:center;gap:18px}
+    .mc-icon{font-size:2rem;line-height:1;flex-shrink:0}
+    .mc-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--wht);letter-spacing:-.4px}
+    .mc-count{font-size:.63rem;font-weight:800;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.1);padding:4px 11px;border-radius:100px}
+    .mc-arrow{font-size:1.1rem;color:rgba(255,255,255,.5);transition:transform .3s;flex-shrink:0}
+    .mc-head.collapsed .mc-arrow{transform:rotate(-90deg)}
+    .mc-body.collapsed{display:none}
+    .mc-more{display:block;margin:22px auto 0;background:transparent;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.5);padding:12px 38px;border-radius:100px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .22s;letter-spacing:.04em}
+    .mc-more:hover{border-color:var(--y);color:var(--y)}
+    .mc-more.done{display:none}
+    .mc-top{background:linear-gradient(120deg,rgba(255,209,0,.2) 0%,rgba(255,209,0,.06) 100%);border:1px solid rgba(255,209,0,.18)}
+    .mc-fruit{background:linear-gradient(120deg,rgba(255,110,155,.16) 0%,rgba(255,110,155,.04) 100%);border:1px solid rgba(255,110,155,.16)}
+    .mc-bbt{background:linear-gradient(120deg,rgba(145,85,220,.18) 0%,rgba(145,85,220,.05) 100%);border:1px solid rgba(145,85,220,.18)}
+
+    /* ── REVIEWS / SOCIAL PROOF ── */
+    .reviews{padding:100px 48px}
+    .reviews-inner{max-width:1140px;margin:0 auto}
+    .reviews-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+    .reviews-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1.0}
+    .reviews-meta{font-size:.9rem;color:var(--mut);line-height:1.7}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .rv{background:var(--wht);border:1px solid var(--gry);border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .rv:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.1)}
+    .rv-icon{font-size:2.2rem;margin-bottom:16px}
+    .rv-big{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--blk);letter-spacing:-2px;line-height:1;margin-bottom:8px}
+    .rv-label{font-size:.88rem;color:var(--mut);line-height:1.5;max-width:180px}
+    .rv-ig-link{display:inline-block;margin-top:16px;font-size:.82rem;font-weight:700;color:var(--blk);background:var(--y);padding:6px 16px;border-radius:100px;text-decoration:none;letter-spacing:.02em}
+    .rv-ig-link:hover{opacity:.85}
+    .rv-cta-card{background:var(--blk);border-color:var(--blk)}
+    .rv-cta-card .rv-icon,.rv-cta-card .rv-big,.rv-cta-card .rv-label{color:#fff}
+    .rv-cta-card .rv-label{color:rgba(255,255,255,.65)}
+    .rv-cta-btn{display:inline-block;margin-top:20px;font-size:.85rem;font-weight:800;color:var(--blk);background:var(--y);padding:10px 22px;border-radius:100px;text-decoration:none;letter-spacing:.03em;transition:opacity .2s}
+    .rv-cta-btn:hover{opacity:.85}
+
+    /* ── LOCATION ── */
+    .loc-wrap{padding:100px 48px;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
+    .loc-title{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-2.5px;line-height:1.02;margin-bottom:40px}
+    .info-row{display:flex;align-items:flex-start;gap:18px;margin-bottom:26px}
+    .ii{width:46px;height:46px;min-width:46px;background:var(--y);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+    .ilabel{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:4px}
+    .ival{font-size:.95rem;font-weight:500;line-height:1.5}
+    .ival a{color:var(--txt);text-decoration:none;transition:color .2s}
+    .ival a:hover{color:var(--blk)}
+    .map-box{border-radius:24px;overflow:hidden;height:420px;border:1px solid var(--gry);background:var(--off)}
+    .map-box iframe{width:100%;height:100%;border:none}
+
+    /* ── MASCOT ── */
+    /* Circular crop centra la cara del personaje, oculta el fondo cuadrado */
+    .mascot-circle{width:200px;height:200px;object-fit:cover;object-position:center 18%;border-radius:50%;border:5px solid rgba(255,255,255,.85);box-shadow:0 12px 44px rgba(0,0,0,.18);display:block;flex-shrink:0}
+    .mascot-float{width:110px;height:110px;object-fit:cover;object-position:center 15%;border-radius:50%;border:4px solid var(--y);box-shadow:0 6px 24px rgba(255,209,0,.35);display:block;margin-top:28px}
+
+    /* ── DELIVERY CTA ── */
+    .delivery{background:var(--y);padding:72px 64px;display:flex;align-items:center;justify-content:center;gap:64px;flex-wrap:wrap}
+    .delivery-content{text-align:left;max-width:480px}
+    .delivery h2{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:var(--blk);letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+    .delivery p{color:rgba(0,0,0,.55);font-size:.98rem;margin-bottom:36px}
+    .d-btns{display:flex;gap:14px;flex-wrap:wrap}
+    .btn-dk{background:var(--blk);color:var(--wht);padding:15px 38px;border-radius:100px;font-weight:800;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .25s,box-shadow .25s}
+    .btn-dk:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.28)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--blk);padding:72px 48px 32px}
+    .ft-grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:64px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .ft-logo{font-size:1.9rem;font-weight:900;color:var(--wht);letter-spacing:-1.5px;margin-bottom:14px}
+    .ft-logo span{color:var(--y)}
+    .ft-desc{font-size:.84rem;color:rgba(255,255,255,.35);line-height:1.75;max-width:270px}
+    .ft-col h5{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:18px}
+    .ft-col a{display:block;font-size:.84rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:12px;transition:color .2s}
+    .ft-col a:hover{color:var(--y)}
+    .ft-bottom{max-width:1140px;margin:28px auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;color:rgba(255,255,255,.25)}
+    .socials{display:flex;gap:12px}
+    .social{width:38px;height:38px;background:rgba(255,255,255,.07);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;text-decoration:none;transition:background .2s,transform .2s}
+    .social:hover{background:var(--y);transform:translateY(-2px)}
+
+    /* ── FLOATING BTN ── */
+    .float-order{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--y);color:var(--blk);padding:13px 26px;border-radius:100px;font-weight:900;font-size:.88rem;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 8px 36px rgba(255,209,0,.5);animation:glow 2.8s ease-in-out infinite;transition:transform .2s}
+    .float-order:hover{transform:scale(1.06);animation:none;box-shadow:0 12px 48px rgba(255,209,0,.7)}
+    @keyframes glow{0%,100%{box-shadow:0 8px 36px rgba(255,209,0,.4)}50%{box-shadow:0 8px 52px rgba(255,209,0,.85)}}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:860px){
+      nav{padding:0 20px}
+      .nav-links,.nav-cta{display:none}
+      .ham{display:flex}
+      .delivery{gap:36px;padding:56px 32px;justify-content:center;text-align:center}
+      .delivery-content{text-align:center}
+      .d-btns{justify-content:center}
+      .mascot-circle{width:150px;height:150px}
+      .hero{grid-template-columns:1fr;padding-top:72px}
+      .hero-text{padding:88px 28px 56px;border-right:none;border-bottom:1px solid var(--gry);text-align:center}
+      .hero-eyebrow{justify-content:center}
+      .hero-btns{justify-content:center}
+      .hero-wall{padding-top:0;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;height:400px}
+      .hw:first-child{grid-row:span 2}
+      .what{padding:80px 24px}
+      .what-inner{grid-template-columns:1fr;gap:40px}
+      .what-left-sticky{position:static}
+      .what{padding:72px 20px}
+      .what-grid{grid-template-columns:1fr}
+      .about-wrap{grid-template-columns:1fr;gap:44px;padding:72px 24px}
+      .about-visual{min-height:300px;grid-template-rows:160px 160px}
+      .about-logo{width:60%}
+      .gallery{padding:72px 20px}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+      .drink-card:first-child{grid-column:span 2}
+      .menu-section{padding:72px 20px}
+      .reviews{padding:72px 20px}
+      .reviews-head{grid-template-columns:1fr}
+      .review-grid{grid-template-columns:1fr}
+      .loc-wrap{grid-template-columns:1fr;gap:44px;padding:72px 24px}
+      .map-box{height:300px}
+      .delivery{padding:64px 24px}
+      .ft-grid{grid-template-columns:1fr;gap:36px;padding:0 0 48px}
+      footer{padding:56px 24px 28px}
+      .stat{padding:22px 16px;min-width:140px}
+    }
+    @media(max-width:480px){
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:unset}
+      .drink-card{height:200px}
+      .drink-card:first-child{grid-column:span 1}
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING CTA -->
+<a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener" class="float-order">🧋 Pedir ahora</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">teli<span>ciosa</span></a>
+  <ul class="nav-links">
+    <li><a href="#que-es">¿Qué es?</a></li>
+    <li><a href="#menu">Carta</a></li>
+    <li><a href="#opiniones">Comunidad</a></li>
+    <li><a href="#donde-estamos">Ubicación</a></li>
+  </ul>
+  <a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener" class="nav-cta">Pedir delivery →</a>
+  <button class="ham" id="ham" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-nav" id="mobNav">
+  <ul>
+    <li><a href="#que-es" onclick="closeMob()">¿Qué es?</a></li>
+    <li><a href="#menu" onclick="closeMob()">Carta</a></li>
+    <li><a href="#opiniones" onclick="closeMob()">Opiniones</a></li>
+    <li><a href="#donde-estamos" onclick="closeMob()">Ubicación</a></li>
+  </ul>
+  <a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener" class="btn-y" onclick="closeMob()">🛵 Pedir delivery →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <img src="assets/avatar.jpg" alt="Teliciosa" class="hero-logo">
+    <div class="hero-eyebrow">El primer Bubble Tea de Córdoba</div>
+    <h1 class="hero-title">TELI<span class="neon">CIOSA</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Bubble Tea, tés afrutados, helados artesanos y café. Solo en Córdoba.</p>
+    <span class="hero-price">Desde 6,50 €</span>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-y">Ver la carta ↓</a>
+      <a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener" class="btn-dark">Pedir a domicilio</a>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
+  </div>
+  <div class="hero-wall">
+    <div class="hw"><img src="assets/ig_1.jpg" alt="Teliciosa Córdoba"><span class="hw-lbl">@teliciosa</span></div>
+    <div class="hw"><img src="assets/ig_2.jpg" alt="Bebidas Teliciosa"></div>
+    <div class="hw"><img src="assets/ig_3.webp" alt="Bubble Tea Córdoba"><span class="hw-lbl">Bubble Tea</span></div>
+    <div class="hw"><img src="assets/ig_4.webp" alt="Teliciosa bebidas"></div>
+    <div class="hw"><img src="assets/ig_5.webp" alt="Teliciosa CC Arcángel"></div>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="mi">Bubble Tea</span><span class="mi">Tés Afrutados</span><span class="mi">Helados Artesanos</span><span class="mi">Café</span><span class="mi">Córdoba</span><span class="mi">Delivery</span><span class="mi">@teliciosa</span><span class="mi">Taro Oreo</span><span class="mi">Mango con Queso</span><span class="mi">Té Azul</span><span class="mi">Oreo Matcha</span><span class="mi">Bubble Tea</span><span class="mi">Tés Afrutados</span><span class="mi">Helados Artesanos</span><span class="mi">Café</span><span class="mi">Córdoba</span><span class="mi">Delivery</span><span class="mi">@teliciosa</span><span class="mi">Taro Oreo</span><span class="mi">Mango con Queso</span><span class="mi">Té Azul</span><span class="mi">Oreo Matcha</span>
+  </div>
+</div>
+
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-n">+20</div><div class="stat-l">Sabores únicos</div></div>
+  <div class="stat"><div class="stat-n">Dic. 2023</div><div class="stat-l">Los primeros en Córdoba</div></div>
+  <div class="stat"><div class="stat-n">#1</div><div class="stat-l">Bubble Tea en Córdoba</div></div>
+</div>
+
+<!-- QUÉ ES EL BUBBLE TEA -->
+<section id="que-es" class="what">
+  <div class="what-inner">
+    <div class="what-left-sticky fu">
+      <div class="stag lt">Cómo funciona</div>
+      <h2 class="what-left-title">¿Qué es el <em>Bubble Tea?</em></h2>
+      <p class="what-left-sub">Una bebida asiática que arrasa en todo el mundo. Ya en Córdoba, preparada al momento con los mejores ingredientes.</p>
+    </div>
+    <div class="what-steps">
+      <div class="what-step fu">
+        <div class="what-step-n">01</div>
+        <div>
+          <h3>La base de té</h3>
+          <p>Empezamos con un té de calidad: negro, de jazmín, matcha, taro, frutas... cada uno con su sabor y color únicos. Lo preparamos al momento, frío y perfecto.</p>
+        </div>
+      </div>
+      <div class="what-step fu fu-d1">
+        <div class="what-step-n">02</div>
+        <div>
+          <h3>Los toppings</h3>
+          <p>Añadimos bolitas de tapioca cocinadas artesanalmente, bolitas de frutas que explotan en la boca, o crema de queso suave. Aquí está el secreto.</p>
+        </div>
+      </div>
+      <div class="what-step fu fu-d2">
+        <div class="what-step-n">03</div>
+        <div>
+          <h3>Tu bebida</h3>
+          <p>El resultado: una bebida única, fresca y visualmente espectacular. Cada sorbo con la pajita ancha es una experiencia distinta. Una vez que pruebas, repites.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre-nosotros">
+  <div class="about-wrap">
+    <div>
+      <div class="stag dk fu">Nuestra historia</div>
+      <h2 class="about-title fu">Así llegó el<br>Bubble Tea a <em>Córdoba</em></h2>
+      <p class="about-body fu">Somos el <strong>primer puesto de Bubble Tea de Córdoba</strong>. Lo que empezó como una pasión por las bebidas asiáticas más populares del mundo se convirtió en el rincón favorito de los cordobeses para tomar algo fresco, diferente y delicioso.</p>
+      <p class="about-body fu">Cada bebida se prepara al momento con ingredientes frescos: tés de calidad, tapioca artesana, frutas naturales y esa combinación perfecta que te hace repetir. Encuéntranos en el Centro Comercial El Arcángel o pídelo cómodamente a domicilio.</p>
+      <div class="tags fu">
+        <span class="tag">🧋 Bubble Tea</span>
+        <span class="tag">🍑 Tés Afrutados</span>
+        <span class="tag">🍦 Helado Artesano</span>
+        <span class="tag">☕ Café</span>
+        <span class="tag">🛵 Delivery</span>
+      </div>
+      <img src="assets/avatar.jpg" alt="Mascota Teliciosa" class="mascot-float fu" aria-hidden="true">
+    </div>
+    <div class="about-visual fu">
+      <div class="about-photo">
+        <img src="assets/ig_6.webp" alt="Teliciosa Bubble Tea Córdoba">
+        <span class="about-handle-badge">@teliciosa</span>
+      </div>
+      <div class="about-photo">
+        <img src="assets/drink_taro.jpg" alt="Taro Oreo">
+      </div>
+      <div class="about-photo">
+        <img src="assets/ig_7.webp" alt="Teliciosa bebidas">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-head">
+    <div class="stag dk ct fu">Nuestras bebidas</div>
+    <h2 class="gallery-title fu">Tan buenas<br>como parecen</h2>
+    <p class="gallery-sub fu">Cada bebida es una obra de arte. Síguenos en Instagram para ver todas las novedades.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="drink-card fu">
+      <img src="assets/ig_8.webp" alt="Teliciosa bebidas">
+      <div class="dc-ov"></div><span class="dc-label">@teliciosa</span>
+    </div>
+    <div class="drink-card fu fu-d1">
+      <img src="assets/ig_9.webp" alt="Teliciosa bebidas">
+      <div class="dc-ov"></div><span class="dc-label">@teliciosa</span>
+    </div>
+    <div class="drink-card fu fu-d1">
+      <img src="assets/drink_matcha.jpg" alt="Oreo Matcha">
+      <div class="dc-ov"></div><span class="dc-label">Oreo Matcha</span>
+    </div>
+    <div class="drink-card fu fu-d2">
+      <img src="assets/drink_blue.jpg" alt="Té Azul">
+      <div class="dc-ov"></div><span class="dc-label">Té Azul ✨</span>
+    </div>
+    <div class="drink-card fu fu-d2">
+      <img src="assets/drink_classic.jpg" alt="Brown Sugar Boba">
+      <div class="dc-ov"></div><span class="dc-label">Brown Sugar</span>
+    </div>
+    <div class="drink-card fu fu-d3">
+      <img src="assets/drink_mango.jpg" alt="Mango con Queso">
+      <div class="dc-ov"></div><span class="dc-label">Mango con Queso</span>
+    </div>
+  </div>
+  <div class="gallery-cta fu">
+    <p>¿Quieres ver más? Estamos en Instagram</p>
+    <a href="https://www.instagram.com/teliciosa/" target="_blank" rel="noopener" class="btn-y">📸 @teliciosa en Instagram</a>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="menu-head">
+    <div class="stag lt ct fu">La carta</div>
+    <h2 class="menu-title fu">Nuestra<br>Carta</h2>
+    <p class="menu-sub fu">Elige tu favorito · Todos los tamaños disponibles en local</p>
+  </div>
+  <div id="menu-container"></div>
+  <div class="menu-cta fu">
+    <p>¿Te apetece alguno? Pídelo ahora mismo</p>
+    <a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener" class="btn-y">🛵 Pedir en Glovo</a>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="opiniones" class="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-head">
+      <div>
+        <div class="stag dk fu">Nuestra comunidad</div>
+        <h2 class="reviews-title fu">El primero en<br>Córdoba</h2>
+      </div>
+      <div class="fu">
+        <p class="reviews-meta">Desde diciembre de 2023 somos el único Bubble Tea de Córdoba. Más de 2.600 personas nos siguen en Instagram. ¿Tú ya nos has probado?</p>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="rv fu">
+        <div class="rv-icon">📸</div>
+        <div class="rv-big">2.600+</div>
+        <div class="rv-label">seguidores en Instagram y contando</div>
+        <a href="https://instagram.com/teliciosa" class="rv-ig-link" target="_blank">@teliciosa →</a>
+      </div>
+      <div class="rv fu fu-d1">
+        <div class="rv-icon">🏆</div>
+        <div class="rv-big">#1</div>
+        <div class="rv-label">Bubble Tea en Córdoba — abiertos desde Dic. 2023</div>
+      </div>
+      <div class="rv fu fu-d2 rv-cta-card">
+        <div class="rv-icon">⭐</div>
+        <div class="rv-big">¿Ya<br>fuiste?</div>
+        <div class="rv-label">Cuéntanos en Google Maps y ayuda a más personas a descubrirnos</div>
+        <a href="https://www.google.com/search?q=Teliciosa+bubble+tea+C%C3%B3rdoba" class="rv-cta-btn" target="_blank">Dejar una reseña →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="donde-estamos">
+  <div class="loc-wrap">
+    <div>
+      <div class="stag dk fu">Encuéntranos</div>
+      <h2 class="loc-title fu">Ven a<br>visitarnos</h2>
+      <div class="info-row fu">
+        <div class="ii">📍</div>
+        <div><div class="ilabel">Dirección</div>
+          <div class="ival">Centro Comercial El Arcángel, Planta 1<br>Al lado de McDonald's · Córdoba</div></div>
+      </div>
+      <div class="info-row fu">
+        <div class="ii">🕐</div>
+        <div><div class="ilabel">Horario</div>
+          <div class="ival">Lun–Jue: 16:00 – 22:00<br>Vie–Dom: 14:30 – 22:30</div></div>
+      </div>
+      <div class="info-row fu">
+        <div class="ii">📞</div>
+        <div><div class="ilabel">Teléfono</div>
+          <div class="ival"><a href="tel:957750046">957 750 046</a></div></div>
+      </div>
+      <div class="info-row fu">
+        <div class="ii">📱</div>
+        <div><div class="ilabel">Síguenos</div>
+          <div class="ival"><a href="https://www.instagram.com/teliciosa/" target="_blank" rel="noopener">@teliciosa</a> en Instagram y TikTok</div></div>
+      </div>
+    </div>
+    <div class="map-box fu">
+      <iframe src="https://maps.google.com/maps?q=Centro+Comercial+El+Arc%C3%A1ngel+C%C3%B3rdoba+Spain&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy" title="Teliciosa en Google Maps"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY CTA -->
+<div class="delivery">
+  <img src="assets/avatar.jpg" alt="Mascota Teliciosa" class="mascot-circle fu">
+  <div class="delivery-content">
+    <h2 class="fu">¿No puedes venir?<br>Te lo llevamos. 🛵</h2>
+    <p class="fu">Pide tu Bubble Tea favorito por Glovo y recíbelo en casa</p>
+    <div class="d-btns fu">
+      <a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener" class="btn-dk">🟡 Pedir en Glovo</a>
+      <a href="https://www.instagram.com/teliciosa/" target="_blank" rel="noopener" class="btn-dk">📸 Instagram</a>
+      <a href="https://www.tiktok.com/@teliciosa" target="_blank" rel="noopener" class="btn-dk">🎵 TikTok</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">teli<span>ciosa</span></div>
+      <p class="ft-desc">El primer Bubble Tea de Córdoba. Tés afrutados, Bubble Tea, helados artesanos y café. CC El Arcángel, Planta 1.</p>
+    </div>
+    <div class="ft-col">
+      <h5>Carta</h5>
+      <a href="#menu">Más Vendidos</a>
+      <a href="#menu">Tés Afrutados</a>
+      <a href="#menu">Bubble Tea</a>
+    </div>
+    <div class="ft-col">
+      <h5>Visítanos</h5>
+      <a href="#donde-estamos">Cómo llegar</a>
+      <a href="https://glovoapp.com/es/es/cordoba/stores/teliciosa-cordoba-cordoba" target="_blank" rel="noopener">Pedir delivery</a>
+      <a href="https://www.instagram.com/teliciosa/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@teliciosa" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2026 Teliciosa Córdoba · Todos los derechos reservados</span>
+    <div class="socials">
+      <a href="https://www.instagram.com/teliciosa/" target="_blank" rel="noopener" class="social" title="Instagram">📸</a>
+      <a href="https://www.tiktok.com/@teliciosa" target="_blank" rel="noopener" class="social" title="TikTok">🎵</a>
+    </div>
+  </div>
+</footer>
+
+<script src="menu-static.js"></script>
+<script>
+  // ── Hamburger menu ──
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mobNav');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+    document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMob() {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ── Scroll animations ──
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  function observeFu() { document.querySelectorAll('.fu:not(.vis)').forEach(el => io.observe(el)); }
+  observeFu();
+
+  // ── Menu category accordion ──
+  function toggleCat(head) {
+    const body = head.nextElementSibling;
+    const isOpen = !body.classList.contains('collapsed');
+    body.classList.toggle('collapsed', isOpen);
+    head.classList.toggle('collapsed', isOpen);
+  }
+  function showMore(btn) {
+    btn.previousElementSibling.classList.add('expanded');
+    btn.classList.add('done');
+  }
+
+  // ── Dynamic menu render ──
+  async function renderMenu() {
+    let data;
+    try {
+      const res = await fetch('/api/menu');
+      if (res.ok) data = await res.json();
+    } catch(e) {}
+    if (!data) data = window.__MENU__;
+    if (!data) return;
+    try {
+      const container = document.getElementById('menu-container');
+      if (!container) return;
+      container.innerHTML = '';
+      data.categories.forEach((cat, idx) => {
+        const items = data.items.filter(i => i.category === cat.id);
+        const visible = cat.visibleCount > 0 ? cat.visibleCount : items.length;
+        const extraCount = Math.max(0, items.length - visible);
+        const fuDelay = idx === 0 ? 'fu' : `fu fu-d${idx}`;
+        const cards = items.map((item, i) => {
+          const isExtra = cat.visibleCount > 0 && i >= visible;
+          const badge = item.badge ? `<span class="badge ${item.badgeType}">${item.badge}</span>` : '';
+          return `<div class="card${isExtra ? ' extra' : ''}">
+            <img class="card-img" src="${item.image}" alt="${item.name}">
+            <div class="card-body">
+              <span class="ci">${item.emoji}</span>
+              <div class="cn">${item.name}</div>
+              <div class="cd">${item.description}</div>
+              <div class="cf"><span class="cp">${item.price} €</span>${badge}</div>
+            </div>
+          </div>`;
+        }).join('');
+        const moreBtn = extraCount > 0
+          ? `<button class="mc-more" data-more="${extraCount}" onclick="showMore(this)">Ver ${extraCount} más ↓</button>`
+          : '';
+        const div = document.createElement('div');
+        div.className = `menu-cat ${fuDelay}`;
+        div.innerHTML = `
+          <div class="mc-head ${cat.theme}" onclick="toggleCat(this)">
+            <div class="mc-info">
+              <span class="mc-icon">${cat.icon}</span>
+              <h3 class="mc-title">${cat.name}</h3>
+              <span class="mc-count">${items.length} bebidas</span>
+            </div>
+            <span class="mc-arrow">↓</span>
+          </div>
+          <div class="mc-body cards">${cards}</div>
+          ${moreBtn}`;
+        container.appendChild(div);
+      });
+      observeFu();
+    } catch (e) {}
+  }
+  renderMenu();
+</script>
+
+</body>
+</html>
